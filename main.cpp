@@ -20,6 +20,8 @@ void compare(int id, T result, T expect){
 }
 
 int main(int argc, char const *argv[]) {
+    int a[] = {1};
+    cout << a[2] << endl;
     // vector<std::vector<int> > aList = {
     //     {0,1,0,2,1,0,1,3,2,1,2,1}
     // };

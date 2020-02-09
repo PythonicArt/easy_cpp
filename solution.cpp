@@ -2,7 +2,7 @@
 #include <iostream>
 /* This program inputs two numbers x and y and outputs their sum */
 
-int main() {
+int main1() {
     int x, y;
     std::cout << "Please enter two numbers: ";
     std::cin >> x >> y; // input x and y
