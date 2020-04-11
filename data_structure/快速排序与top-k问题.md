@@ -1,4 +1,4 @@
-快速排序的思想
+# 快速排序的思想
 
 一轮操作
     找一个哨兵值, 把小于哨兵值得元素都移动到左边， 大于哨兵值得元素都移动到右边去
@@ -20,11 +20,12 @@
         列表的长度就是轮次， n
         n*n
 
-topK的思想
+# topK的思想
 
 需要快速地找到列表中前k个元素
+快速找到序列中 第k小的 元素
 
-题目没有讲一个前提， 那就是前k个元素是否要有序
+题目没有讲一个前提, 那就是前k个元素是否要有序
 
 1. 可以先排序，然后取前k个元素. 效率为排序的效率, 最好为 n*logn
 2. 参考快排的思想， 找一个哨兵值, 进行多轮的筛选
@@ -32,5 +33,43 @@ topK的思想
     如果没有找到，那就是缩小了范围， 继续找, 直到找到
     最理想的 O(n)
 
-3.维护一个n个元素的有序结构，依次往里添加, 如果添加操作是o(1), 则结果就是 非常标准的o(n)
-    这个有序结构不能是 列表， 只能高级结构 堆(树形结构)
+```cpp
+
+    void quickSelect(vector<E>&S, int a, int b, int k, const C& less){
+        if(a>=b) return
+        //  取最后一个值， 也可以随机取  
+        E piovt = S[b]
+        int low = a
+        int high = b-1
+        while(low <= high){
+            // 往右找到大于pivot的元素的下标low
+            while(low <= high && !less(pivot, S[low]) ) low++;
+            // 往右找到小于pivot的元素的下标high
+            while(low <= high && !less(S[high], pivot)) high--;
+            if(low < high)
+                swap(S[low], s[high])
+        }
+        swap(S[low], s[b])
+        int idx = low - a + 1;
+        if (idx == k) {
+            // 刚好是第k个
+            return S[low]
+        }
+        else if(idx > k){
+            // 个数大于k， 在前半部分找第k个
+            return quickSelect(S, a, low - 1, k, less)
+        }
+        else{
+            // 个数小于k， 在后半部分找第k - idx个
+            newK = k - idx
+            return quickSelect(S, low + 1, b, newK, less)
+        }
+    }
+
+```
+
+
+# 删减-选择模式
+    根据一定的判断， 减少问题的规模
+    比如 二分查找, 每次问题规模缩小一半
+    寻找topk, 每次都可以去掉一部分不满足条件的元素
