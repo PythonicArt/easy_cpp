@@ -18,6 +18,32 @@ void compare(int id, T result, T expect){
 }
 
 template <typename T>
+void Solution<T>::checkCase(){
+    int size1 = this -> numInput.size();
+    int size2 = this -> numOutPut.size();
+    if ( size1 != size2) {
+        printf("case case size unmatch!!! size %d size %d \n", size1, size2);
+    }
+    else{
+        for (int i = 0; i < size1; i++) {
+            int result = this -> mySqrt(numInput[i]);
+            int expect = numOutPut[i];
+            compare(i+1, result, expect);
+        }
+    }
+}
+
+// 优先安排测试数据
+template <typename T>
+void Solution<T>::setTestCase() {
+    vector<int> inputs = { 0, 4, 8 };
+    vector<int> expects = { 0, 2, 2 };
+    this -> numInput = inputs;
+    this -> numOutPut = expects;
+}
+
+// 其次写代码
+template <typename T>
 int Solution<T>::mySqrt(int x) {
     int a = 1;
     int b = x/2;
@@ -36,29 +62,4 @@ int Solution<T>::mySqrt(int x) {
         return mid;
     }
     return last;
-}
-
-template <typename T>
-void Solution<T>::setTestCase() {
-// void Solution::setTestCase() {
-    vector<int> inputs = { 0, 4, 8 };
-    vector<int> expects = { 0, 2, 2 };
-    this -> numInput = inputs;
-    this -> numOutPut = expects;
-}
-
-template <typename T>
-void Solution<T>::checkCase(){
-    int size1 = this -> numInput.size();
-    int size2 = this -> numOutPut.size();
-    if ( size1 != size2) {
-        printf("case case size unmatch!!! size %d size %d \n", size1, size2);
-    }
-    else{
-        for (int i = 0; i < size1; i++) {
-            int result = this -> mySqrt(numInput[i]);
-            int expect = numOutPut[i];
-            compare(i+1, result, expect);
-        }
-    }
 }
