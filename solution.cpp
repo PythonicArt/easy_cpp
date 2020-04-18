@@ -41,18 +41,16 @@ int Solution<T>::mySqrt(int x) {
 template <typename T>
 void Solution<T>::setTestCase() {
 // void Solution::setTestCase() {
-    vector<int> aList = { 0, 4, 8 };
-    vector<int> rList = { 0, 2, 2 };
-    this -> numInput = aList;
-    this -> numOutPut = rList;
+    vector<int> inputs = { 0, 4, 8 };
+    vector<int> expects = { 0, 2, 2 };
+    this -> numInput = inputs;
+    this -> numOutPut = expects;
 }
 
 template <typename T>
 void Solution<T>::checkCase(){
-// void Solution::checkCase(){
     int size1 = this -> numInput.size();
     int size2 = this -> numOutPut.size();
-
     if ( size1 != size2) {
         printf("case case size unmatch!!! size %d size %d \n", size1, size2);
     }
@@ -63,9 +61,4 @@ void Solution<T>::checkCase(){
             compare(i+1, result, expect);
         }
     }
-}
-
-template <typename T>
-void my<T>::man(){
-    cout<<11<endl;
 }

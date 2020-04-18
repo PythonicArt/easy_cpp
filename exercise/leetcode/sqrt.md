@@ -20,7 +20,6 @@ Explanation: The square root of 8 is 2.82842..., and since
     当  j^2 < n < (j+1)^2 时, j就是所查到的结果
 
 ```cpp
-
 class Solution{
     public:
          int mySqrt(int x) {
@@ -43,5 +42,6 @@ class Solution{
              return last;
     }
 };
-
+// vector<int> inputs = { 0, 4, 8 };
+// vector<int> expects = { 0, 2, 2 };
 ```

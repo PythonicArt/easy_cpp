@@ -13,14 +13,16 @@ class Solution{
          vector<int> numOutPut;
          void setTestCase();
          void checkCase();
-         T testFun(){};
 };
+
+template class Solution<int>;
 
 template <typename T>
 void compare(int id, T result, T expect);
 
-template <typename T>
-class my{
-    public:
-        void man();
-};
+
+// template <typename T>
+// class my{
+//     public:
+//         void man();
+// };
