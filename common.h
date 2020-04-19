@@ -9,20 +9,20 @@ class Solution{
     public:
          Solution(){};
          int mySqrt(int x);
-         vector<int> numInput;
-         vector<int> numOutPut;
+         bool canJump(vector<int>& nums);
+         int jump(vector<int>& nums);
+         bool canReach(vector<int>& arr, int start);
+         //
          void setTestCase();
          void checkCase();
+    private:
+        vector<vector<int> > vectorInput;
+        vector<int> numInput;
+        vector<int> numOutPut;
+        vector<bool> boolOutPut;
 };
 
 template class Solution<int>;
 
 template <typename T>
 void compare(int id, T result, T expect);
-
-
-// template <typename T>
-// class my{
-//     public:
-//         void man();
-// };

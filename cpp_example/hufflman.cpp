@@ -187,7 +187,7 @@ void HuffmanTranslateCoding(HuffmanTree HT, int n,char* ch)
     printf("\n");
 }
 
-void main()
+int main()
 {
     HuffmanTree HT=NULL;
     HuffmanCode HC=NULL;
@@ -206,7 +206,7 @@ void main()
 
     //输入结点权值
     for(i=1;i<=n;i++)
-    {  
+    {
         printf("w[%d]=",i);
         scanf("%d",&w[i]);
     }
@@ -227,5 +227,5 @@ void main()
     printf("Input HuffmanTranslateCoding:");
     gets(tran);
     HuffmanTranslateCoding(HT, n, tran);
-    return;
+    return 0;
 }
