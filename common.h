@@ -12,8 +12,9 @@ class Solution{
          bool canJump(vector<int>& nums);
          int jump(vector<int>& nums);
          bool canReach(vector<int>& arr, int start);
+         double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
          //
-         void setTestCase();
+         // void setTestCase();
          void checkCase();
     private:
         vector<vector<int> > vectorInput;

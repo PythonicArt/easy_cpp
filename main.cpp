@@ -5,7 +5,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
     Solution<int> s;
-    s.setTestCase();
+    // s.setTestCase();
     s.checkCase();
     return 0;
 }
