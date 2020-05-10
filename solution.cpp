@@ -88,3 +88,97 @@ void Solution<T>::checkCase(){
         }
     }
 }
+
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> neighbors;
+
+    Node() {
+        val = 0;
+        neighbors = vector<Node*>();
+    }
+
+    Node(int _val) {
+        val = _val;
+        neighbors = vector<Node*>();
+    }
+
+    Node(int _val, vector<Node*> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+
+
+class Solution1 {
+public:
+
+    map<int, bool> pSigns;
+
+    map<int, Node*> nodes;
+    Node* cloneGraph(Node* node) {
+        int value = node -> val;
+        Node* start = getCopy(value);
+        for (size_t i = 0; i < node -> neighbors.size(); i++) {
+            Node* tmp = (node -> neighbors)[i];
+            if(nodes.find(tmp -> val) == nodes.end()){
+                cloneGraph(tmp);
+            }
+            start -> neighbors.push_back(nodes[tmp -> val]);
+        }
+        return start;
+    }
+    Node* getCopy(int value){
+        if(nodes.find(value) == nodes.end()){
+            nodes[value] = new Node(value);
+        }
+        return nodes[value];
+    }
+
+    void subPrintGraph(Node* node){
+        cout << node->val << " ";
+        pSigns[node -> val] = true;
+    }
+
+    void printGraph(Node* node){
+        subPrintGraph(node);
+        for (size_t i = 0; i < node -> neighbors.size(); i++) {
+            Node* tmp = (node -> neighbors)[i];
+            // cout << tmp -> val << endl;
+            if(pSigns.find(tmp -> val) == pSigns.end()){
+                printGraph(tmp);
+            }
+        }
+    }
+
+};
+
+void test(){
+    Node a;
+    a.val = 1;
+
+    Node b;
+    b.val = 2;
+
+    Node c;
+    c.val = 3;
+
+    Node d;
+    d.val = 4;
+
+    vector<Node * > v1 = {&b, &d};
+    a.neighbors = v1;
+    vector<Node * > v2 = {&a, &c};
+    b.neighbors = v2;
+    vector<Node * > v3 = {&b, &d};
+    c.neighbors = v3;
+    vector<Node * > v4 = {&a, &c};
+    d.neighbors = v4;
+
+    Solution1 s;
+    Node* m = s.cloneGraph(&a);
+    s.printGraph(m);
+
+}
