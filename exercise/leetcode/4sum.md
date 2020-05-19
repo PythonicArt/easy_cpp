@@ -16,3 +16,60 @@
 去重的方法
 unique(start, end)  这个方法 返回去重后的列表的重复元素开始的位置迭代器， 从这里到原列表结束都删除即可
 erase(unique(start, end), end)
+
+```cpp
+for i, elem in nums:
+	diff = target - elem
+	if(elem in maps){
+		j = maps[elem];
+		result.push_back(j+1)
+		result.push_back(i+1)
+	}else{
+		maps[elem]=i
+	}
+return result;
+
+
+sort(nums)
+for(i = 0;i<size-2;i++){
+	if(a[i] == a[i+1]) continue;
+	j = i + 1;
+	for(k = size - 1; k>j;){
+		t = sum(nums, i, j, k)
+		t == target:
+			result.push_back(i, j, k);
+			k--;j++; // 需要先执行一遍再接着下面的循环判断
+			while(k>j and a[k-1] == a[k]) k--;
+			while(j<k and a[j+1] == a[j]) j++;
+		t > target:
+			k--;
+			while(k>j and a[k-1] == a[k]) k--;
+		t < target:
+			j++;
+			while(j<k and a[j+1] == a[j]) j++;
+	}
+}
+
+sort(nums)
+minDiff = 999999999;
+for(i = 0;i<size-2;i++){
+	if(a[i] == a[i+1]) continue;
+	j = i + 1;
+	for(k = size - 1; k>j;){
+		t = sum(nums, i, j, k)
+		t == target:
+			return target;
+		else:
+			diff = abs(t-target)
+			diff < minDiff:
+				minDiff = diff;
+				result = t
+			k--;
+	}
+}
+
+
+
+
+
+```
