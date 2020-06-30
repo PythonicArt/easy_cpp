@@ -64,12 +64,37 @@ for(i = 0;i<size-2;i++){
 			diff < minDiff:
 				minDiff = diff;
 				result = t
-			k--;
+            // 这里可以通过判断减少一些可选项
+            t > target:
+                k--;
+            t < target:
+                j++;
 	}
 }
 
 
-
+nums
+target
+for i in [0, size-2]:
+	for j in [i+1, size-1]:
+		t = nums[i] + nums[j]
+		t in maps:
+			list = maps[t]
+			list.push([i, j])
+		else:
+			maps[t]=[[i, j]]
+for t, elemList in maps:
+	s = target - t
+	s in maps:
+        elemList2 = maps[s]
+        for elem1 in elemList1:
+            for elem2 in elemList2:
+                [a, b] = elem1
+                [c, d] = elem2
+                a != c and a!=d and b!=c and b!=d:
+                tlist = sort([a, b, c, d])
+                result.push(tlist)
+去重result
 
 
 ```
