@@ -56,6 +56,7 @@ int longestConsecutive(vector<int>& nums) {
 
 -------------------
 考虑 加入一个元素a, 考虑 big = a+1, small = a-1
+这里的big和small应该是产生连续序列的边界，中间的值无需更新
 
 ```cpp
 int longestConsecutive(vector<int>& nums) {

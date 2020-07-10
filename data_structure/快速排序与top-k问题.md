@@ -49,6 +49,7 @@
             if(low < high)
                 swap(S[low], s[high])
         }
+        // low位第一个大于 pivot的值的位置
         swap(S[low], s[b])
         int idx = low - a + 1;
         if (idx == k) {
