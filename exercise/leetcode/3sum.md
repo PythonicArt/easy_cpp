@@ -1,3 +1,5 @@
+# [3Sum](https://leetcode.com/problems/3sum/)
+
 Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
 
 Note:
@@ -14,6 +16,14 @@ A solution set is:
   [-1, -1, 2]
 ]
 
+# 思路
+夹逼的思路
+排序后, 使用三个标记位及求和 逐一判断, 根据和与target的差值改变标记位的位置, 直到找到所有结果
+
+# 要点
+重复元素的判断和跳过
+不同循环的i相同
+一趟循环内的j或k相同
 
 ```cpp
 vector<vector<int>> threeSum(vector<int>& nums) {
@@ -24,7 +34,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
     sort(nums.begin(), nums.end());
 
     for(int i = 0;i < nums.size()-2;i++){
-        if(i> 0 && nums[i] == nums[i-1]) continue;
+        if(i> 0 && nums[i] == nums[i-1]) continue; // point: i值与前一位元素相同，那么将得到相同的结果, 所以跳过
         int j = i+1;
         int k = nums.size() - 1;
         while(j<k){
@@ -44,7 +54,6 @@ vector<vector<int>> threeSum(vector<int>& nums) {
                 j++;
                 while(j<k && nums[j] == nums[j-1]) j++;
             }
-
         }    
     }
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stack>
 #include <map>
+#include <numeric>
 
 #include "common.h"
 
@@ -155,30 +156,89 @@ public:
 
 };
 
+// void test(){
+//
+//     Node a;
+//     a.val = 1;
+//
+//     Node b;
+//     b.val = 2;
+//
+//     Node c;
+//     c.val = 3;
+//
+//     Node d;
+//     d.val = 4;
+//
+//     vector<Node * > v1 = {&b, &d};
+//     a.neighbors = v1;
+//     vector<Node * > v2 = {&a, &c};
+//     b.neighbors = v2;
+//     vector<Node * > v3 = {&b, &d};
+//     c.neighbors = v3;
+//     vector<Node * > v4 = {&a, &c};
+//     d.neighbors = v4;
+//
+//     Solution1 s;
+//     Node* m = s.cloneGraph(&a);
+//     s.printGraph(m);
+//
+// }
+
+int minCandy(vector<int> &ratings, vector<int> &t, int i){
+    int n = ratings.size();
+    if(t[i] == 0){
+        t[i] = 1;
+        if(i > 0){
+            if (ratings[i] > ratings[i - 1]) {
+                t[i] = max(t[i], minCandy(ratings, t, i-1) + 1);
+            }
+            else {
+                t[i] = max(t[i], 1);
+            }
+
+        }
+        if(i < n - 1){
+            if (ratings[i] > ratings[i + 1]) {
+                t[i] = max(t[i], minCandy(ratings, t, i+1) + 1);
+            }
+            else {
+                t[i] = max(t[i], 1);
+            }
+        }
+    }
+    return t[i];
+}
+
+int candy(vector<int>& ratings) {
+    int n = ratings.size();
+    std::vector<int> t(n);
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += minCandy(ratings, t, i);
+    }
+    return sum;
+}
+
+
 void test(){
-    Node a;
-    a.val = 1;
+    std::vector<std::vector<int> > v = {
+        {1, 0, 2},
+        {1, 2, 2}
+    };
 
-    Node b;
-    b.val = 2;
+    std::vector<int> r = {5, 4};
 
-    Node c;
-    c.val = 3;
-
-    Node d;
-    d.val = 4;
-
-    vector<Node * > v1 = {&b, &d};
-    a.neighbors = v1;
-    vector<Node * > v2 = {&a, &c};
-    b.neighbors = v2;
-    vector<Node * > v3 = {&b, &d};
-    c.neighbors = v3;
-    vector<Node * > v4 = {&a, &c};
-    d.neighbors = v4;
-
-    Solution1 s;
-    Node* m = s.cloneGraph(&a);
-    s.printGraph(m);
-
+    int size1 = v.size();
+    int size2 = r.size();
+    if ( size1 != size2) {
+        printf("case case size unmatch!!! size %d size %d \n", size1, size2);
+    }
+    else{
+        for (int i = 0; i < size1; i++) {
+            int result = candy(v[i]);
+            int expect = r[i];
+            compare(i+1, result, expect);
+        }
+    }
 }
