@@ -139,3 +139,33 @@ int candy(vector<int>& ratings) {
     return sum;
 }
 ```
+
+
+用一个数组 nums 记录每个位置发的糖果数量， 最后加和。
+
+先从左到右扫描，再从右到左扫描. 
+
+
+int candy(vector<int>& ratings) {
+
+    int n = ratings.size();
+    if(n < 0) return 0;
+    std::vector<int> nums(n, 1);
+
+    for (int i = 0; i < n - 1; ++i)
+    {
+        if(ratings[i] < ratings[i+1]){
+            nums[i+1] = nums[i] + 1;
+        }
+    }
+
+    for (int i = n - 1; i > 0; --i)
+    {
+        if(ratings[i-1] > ratings[i]){
+            nums[i-1] = max(nums[i-1], nums[i]+1);
+        }
+    }
+
+    return accumulate(nums.begin(), nums.end(), 0);
+        
+}

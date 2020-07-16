@@ -69,3 +69,63 @@ int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
     return i+1
 }
 ```
+
+
+变量 start 作为备选的起始点
+left 作为当前点剩下的油量
+使用 accLeft  代表 以备选起始点出发， 到当前点剩下的油量
+
+使用sum 代表以0点出发到当前点剩下的油量
+
+accLeft < 0 当前点以及之前的所有点都不能做起始点， 下一个备选的起始点为 i+1
+
+每次更新一次备选的起始点，accLeft置0
+
+
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+    int n = gas.size();
+    if(n<0) return -1;
+
+    int accLeft = 0;
+    int start = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        int left = gas[i] - cost[i];
+        accLeft += left;
+
+        if(accLeft < 0){
+            start++; // error1: start = i+1;
+            //error2: 每次更新一次备选的起始点， 累积剩余值需要重新计算 accLeft=0;
+        }
+    }
+
+    return accLeft >= 0?start:-1; // error3: 不能通过某个起始点的累积剩余值来判断， 而应该是数组全部的累积剩余值之和。
+        
+}
+
+ac的版本
+
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+    int n = gas.size();
+    if(n<0) return -1;
+
+    int accLeft = 0;
+    int start = 0;
+    int sum = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        int left = gas[i] - cost[i];
+        sum += left;
+        accLeft += left;
+
+        if(accLeft < 0){
+            start = i+1;
+            accLeft = 0;
+        }
+    }
+
+    return sum >= 0?start:-1;
+        
+}
