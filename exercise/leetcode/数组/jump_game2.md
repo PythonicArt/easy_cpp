@@ -1,3 +1,4 @@
+# 45 | [Jump Game II]( https://leetcode.com/problems/jump-game-ii ) | Hard
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
 Each element in the array represents your maximum jump length at that position.
 Your goal is to reach the last index in the minimum number of jumps.
@@ -15,6 +16,7 @@ You can assume that you can always reach the last index.
 思路
 
 从前到后
+
 假设n0 = k
 第一轮考虑 [1, k]
 从i-k, 获取该位置能够到达的最远距离, 循环得到 maxRight

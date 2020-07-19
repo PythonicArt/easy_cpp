@@ -20,7 +20,7 @@ vector<int> plusOne(vector<int>& digits) {
 }
 
 
-使用vector， 每得到一位就push_back。 变长是在push_back里操作的。 而不出直接按下标赋值也会自动变长
+使用vector, 每得到一位就push_back。 变长是在push_back里操作的。 而不是直接按下标赋值也会自动变长
 vector<int> plusOne(vector<int>& digits) {
     int n = digits.size();
     int inc = 1;

@@ -1,3 +1,4 @@
+# 70	[Climbing Stairs](https://leetcode.com/problems/climbing-stairs)	Easy
 
 考虑 要爬到第n阶， 可以从 n-1阶 和 n-2阶 爬上去
 
