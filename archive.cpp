@@ -62,7 +62,7 @@ int Solution<T>::jump(vector<int>& nums){
             step++;
         }
         else
-        // 无法跳跃当前范围, 终点不可达
+        // 无法跳跃当前范围, 终点不可达--
             return 0;
     }
     return 0;
