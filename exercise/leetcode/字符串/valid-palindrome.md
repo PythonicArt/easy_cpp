@@ -4,6 +4,9 @@ palindrome  emmmmmmmm， 不说连题目的看不懂。
 
 回文串检查， 只考虑数字和字母， 其他忽略
 
+Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
 第一版， 主要熟悉字符串的操作。
 遍历
 转换大小写
@@ -32,7 +35,10 @@ public:
     }
 };
 
-最多去掉一个字符， 判断是否是回文。
+
+
+# 最多去掉一个字符， 判断是否是回文。
+
 暴力解应该不是期望的答案， 还是用两个指针， left, right
 
 如果没有出现不相同的， 则是回文

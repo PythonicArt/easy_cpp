@@ -48,7 +48,7 @@ public:
             acc = sign + acc;
         }
 
-        // 关于数值的转换， 从右往左用乘方容易出现很大的值。 
+        // 关于数值的转换， 从右往左用乘方容易出现很大的值, 而且不好判断是否越界
         // 参考一种方式，从左到右， 每次获得一个数字， 放大10倍加上当前的值。        
         int result = 0;
         for (int i = 1; i < acc.size(); ++i)
@@ -102,8 +102,7 @@ public:
                 else{
                     break;
                 } 
-            } 
-            
+            }   
         }
 
         if(acc.empty()) return 0;

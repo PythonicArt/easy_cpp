@@ -9,7 +9,7 @@
 最后 sum = sum - oddCount + 1;
 
 对于hash_map的选择。
-map
+multi_map
     这样考虑 map.count
 
 unordered_map 
@@ -51,7 +51,7 @@ public:
     int longestPalindrome(string s) {
         unordered_map<char,int> count;
         for(char c : s){
-            count[c]++;// 还可以这么遍历
+            count[c]++;// 还可以这么赋初值
         }
         int even = 0, odd = 0, oddCount = 0;
         for(auto i : count){ // 还可以这么遍历！！！
