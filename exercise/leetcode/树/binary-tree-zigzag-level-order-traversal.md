@@ -38,7 +38,7 @@ public:
             v.push_back(t);
         }
         std::vector<int> t = v[lvl];
-        if(lvl %2 !=0)
+        if(lvl %2 ==0)
             t.push_back(cur->val);
         else
             t.insert(t.begin(), cur->val);
